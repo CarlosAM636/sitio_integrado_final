@@ -1,0 +1,7 @@
+Instrucciones para usarla en XAMPP:
+
+Copia y extrae la carpeta cosmeticos en htdocs (Carpeta de XAAMP)
+
+Importa el archivo basededatos.sql desde phpMyAdmin.
+
+Accede desde tu navegador a: http://localhost/sitio_integrado_final/registro.php
