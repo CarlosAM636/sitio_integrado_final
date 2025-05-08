@@ -10,7 +10,7 @@ if (!isset($_SESSION['usuario'])) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tienda Belleza "Ponte Bella"</title>
+  <title>Tienda Belleza "PontBella"</title>
    css  
   <style>
     * {
