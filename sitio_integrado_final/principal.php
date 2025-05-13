@@ -29,6 +29,8 @@ if (!isset($_SESSION['usuario'])) {
       color: #fff;
       text-align: center;
     }
+      span {
+          text-decoration: line-through ;
     nav {
       background: #ffb6c1;
       display: flex;
@@ -298,8 +300,8 @@ if (!isset($_SESSION['usuario'])) {
       </li>
       <li><a href="#">Ofertas</a>
         <ul>
-          <li><a href="#">Promociones</a></li>
-          <li><a href="#">Descuentos</a></li>
+          <li><a href="promociones.html" target="_blank">Promociones</a></li>
+          <li><a href="descuentos.html" target="_blank">Descuentos</a></li>
         </ul>
       </li>
       <li><a href="https://wa.me/qr/BT4ELWJXAJHSI1">Contacto</a></li>
@@ -313,6 +315,7 @@ if (!isset($_SESSION['usuario'])) {
     <div class="producto">
       <img src="base.jpg" alt="Base">
       <h3>Base L'Oréal</h3>
+      <span>39.90</span>
       <p>S/ 29.90</p>
       <button onclick="agregarProducto('Base L\'Oréal', 29.90)">Agregar</button>
     </div>
@@ -333,7 +336,8 @@ if (!isset($_SESSION['usuario'])) {
     <div class="producto">
       <img src="labial2.jpeg" alt="Labial">
       <h3>Labial mate fucsia</h3>
-      <p>S/ 15.00</p>
+      <span> S/12.50</span>
+      <p>S/ 7.00</p>
       <button onclick="agregarProducto('Labial mate fucsia', 15.00)">Agregar</button>
     </div>
 
