@@ -21,5 +21,5 @@ INSERT INTO productos (nombre, descripcion, precio, imagen) VALUES
 ('Base líquida', 'Cobertura perfecta para todo tipo de piel', 45.50, 'base.jpg');
 ('Delineador', 'resalta tu mirada con nuestro delineador', 15.00, 'delineador.jpg');
 ('polvo', 'un acabado suave y natural', 12.00, 'polvo.jpg');
-('rubor', 'dale vida tu rostro con nuestro rubor', 21.90, 'rubor.jpeg');
+('rubor', 'dale vida tu rostro con nuestro rubor', 15.00, 'rubor.jpeg');
 
