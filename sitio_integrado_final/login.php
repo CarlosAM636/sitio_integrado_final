@@ -16,10 +16,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: principal.php");
             exit();
         } else {
-            $error = "Contraseña incorrecta.";
+            $error = "Error: Contraseña Incorrecta.";
         }
     } else {
-        $error = "Usuario no encontrado.";
+        $error = "Error: Usuario no encontrado.";
     }
 }
 ?>
