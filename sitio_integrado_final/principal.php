@@ -356,7 +356,7 @@ if (!isset($_SESSION['usuario'])) {
       <button onclick="agregarProducto('Rubor', 15.00)">Agregar</button>
     </div>
       <div class="producto">
-      <img src="" alt="paleta de sombras">
+      <img src="images.jpg" alt="paleta de sombras">
       <h3>Paleta de sombras</h3>
       <p>S/ 22.00</p>
       <button onclick="agregarProducto('paleta de sombras', 22.00)">Agregar</button>
