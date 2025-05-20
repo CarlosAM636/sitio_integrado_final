@@ -347,6 +347,7 @@ if (!isset($_SESSION['usuario'])) {
       <p>S/ 13.50</p>
       <button onclick="agregarProducto('Sombras de ojos multicolor', 13.50)">Agregar</button>
     </div>
+      
 
     <div class="producto">
       <img src="rubor.jpeg" alt="Rubor">
@@ -354,6 +355,13 @@ if (!isset($_SESSION['usuario'])) {
       <p>S/ 15.00</p>
       <button onclick="agregarProducto('Rubor', 15.00)">Agregar</button>
     </div>
+      <div class="producto">
+      <img src="" alt="paleta de sombras">
+      <h3>Paleta de sombras</h3>
+      <p>S/ 22.00</p>
+      <button onclick="agregarProducto('paleta de sombras', 22.00)">Agregar</button>
+    </div>
+      
     
     <div class="producto">
       <img src="mascara_pestañas.jpeg" alt="Mascara de pestañas">
