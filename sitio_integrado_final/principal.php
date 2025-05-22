@@ -454,10 +454,11 @@ function confirmarEliminacion() {
     } else {
       carrito.splice(indiceAEliminar, 1);
     }
-    
+
     guardarCarrito();
     mostrarCarrito();
     actualizarContador();
+    mostrarToast("Este producto ha sido eliminado"); // 🔔 NUEVA LÍNEA
     indiceAEliminar = null;
   }
   document.getElementById("confirmacionModal").style.display = "none";
