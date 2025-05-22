@@ -11,7 +11,6 @@ if (!isset($_SESSION['usuario'])) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tienda Belleza "Ponte Bella"</title>
-   css  
   <style>
     * {
       box-sizing: border-box;
@@ -401,9 +400,7 @@ if (!isset($_SESSION['usuario'])) {
 
       if (carrito.length === 0) {
     // Si el carrito está vacío, muestra mensaje
-    lista.innerHTML = `<p style="text-align:center; color: #666; font-style: italic;">
-      Tᴜ ᴄᴀʀʀɪᴛᴏ ᴇsᴛᴀ́ ᴠᴀᴄɪ́ᴏ 😞
-    </p>`;
+    lista.innerHTML = `<p style="text-align:center; color: #666; font-style: italic;"> Carrito vacío</p>`;
     totalDiv.textContent = ""; // No mostrar total
   } else {
     // Si hay productos, muestra la lista y total
@@ -458,7 +455,7 @@ function confirmarEliminacion() {
     guardarCarrito();
     mostrarCarrito();
     actualizarContador();
-    mostrarToast("Este producto ha sido eliminado"); // 🔔 NUEVA LÍNEA
+    mostrarToast("Este producto ha sido eliminado");
     indiceAEliminar = null;
   }
   document.getElementById("confirmacionModal").style.display = "none";
