@@ -11,7 +11,7 @@ if (!isset($_SESSION['usuario'])) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tienda Belleza "Ponte Bella"</title>
-
+   css  
   <style>
     * {
       box-sizing: border-box;
@@ -29,9 +29,6 @@ if (!isset($_SESSION['usuario'])) {
       color: #fff;
       text-align: center;
     }
-      span {
-          text-decoration: line-through ;
-      }
     nav {
       background: #ffb6c1;
       display: flex;
@@ -152,19 +149,6 @@ if (!isset($_SESSION['usuario'])) {
       color: #e91e63;
       font-size: 18px;
       cursor: pointer;
-    }
-    
-    #contadorCarrito {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #e91e63;
-    color: white;
-    border-radius: 50%;
-    padding: 2px 7px;
-    font-size: 12px;
-    font-weight: bold;
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
     }
 
     .cerrar-carrito {
@@ -301,22 +285,23 @@ if (!isset($_SESSION['usuario'])) {
       </li>
       <li><a href="#">Ofertas</a>
         <ul>
-          <li><a href="promociones.html" target="_blank">Promociones</a></li>
-          <li><a href="descuentos.html" target="_blank">Descuentos</a></li>
+          <li><a href="#">Promociones</a></li>
+          <li><a href="#">Descuentos</a></li>
         </ul>
       </li>
       <li><a href="https://wa.me/qr/BT4ELWJXAJHSI1">Contacto</a></li>
     </ul>
   </nav>
 
-  <button class="toggle-carrito" onclick="mostrarCarrito()">🛒<span id="contadorCarrito">0</span></button>
+ <button class="toggle-carrito" onclick="mostrarCarrito()">
+  🛒 <span id="contadorCarrito" style="font-size:14px; background:#e91e63; color:white; padding:2px 8px; border-radius:50%; margin-left:5px;">0</span>
+</button>
 
   <div class="productos">
     <!-- Productos -->
     <div class="producto">
       <img src="base.jpg" alt="Base">
       <h3>Base L'Oréal</h3>
-      <span>39.90</span>
       <p>S/ 29.90</p>
       <button onclick="agregarProducto('Base L\'Oréal', 29.90)">Agregar</button>
     </div>
@@ -337,8 +322,7 @@ if (!isset($_SESSION['usuario'])) {
     <div class="producto">
       <img src="labial2.jpeg" alt="Labial">
       <h3>Labial mate fucsia</h3>
-      <span> S/12.50</span>
-      <p>S/ 7.00</p>
+      <p>S/ 15.00</p>
       <button onclick="agregarProducto('Labial mate fucsia', 15.00)">Agregar</button>
     </div>
 
@@ -348,7 +332,6 @@ if (!isset($_SESSION['usuario'])) {
       <p>S/ 13.50</p>
       <button onclick="agregarProducto('Sombras de ojos multicolor', 13.50)">Agregar</button>
     </div>
-      
 
     <div class="producto">
       <img src="rubor.jpeg" alt="Rubor">
@@ -356,13 +339,6 @@ if (!isset($_SESSION['usuario'])) {
       <p>S/ 15.00</p>
       <button onclick="agregarProducto('Rubor', 15.00)">Agregar</button>
     </div>
-      <div class="producto">
-      <img src="images.jpg" alt="paleta de sombras">
-      <h3>Paleta de sombras</h3>
-      <p>S/ 22.00</p>
-      <button onclick="agregarProducto('paleta de sombras', 22.00)">Agregar</button>
-    </div>
-      
     
     <div class="producto">
       <img src="mascara_pestañas.jpeg" alt="Mascara de pestañas">
@@ -410,6 +386,8 @@ if (!isset($_SESSION['usuario'])) {
 
   guardarCarrito();
   mostrarToast(`${nombre} agregado al carrito`);
+  actualizarContador();
+
 
   if (document.getElementById("carrito").style.display === "block") {
     mostrarCarrito(); // actualizar si el carrito está abierto
@@ -470,17 +448,31 @@ function eliminar(indice) {
 
 function confirmarEliminacion() {
   if (indiceAEliminar !== null) {
-    carrito.splice(indiceAEliminar, 1);
+    if (carrito[indiceAEliminar].cantidad > 1) {
+      carrito[indiceAEliminar].cantidad -= 1;
+      carrito[indiceAEliminar].precioTotal = carrito[indiceAEliminar].cantidad * carrito[indiceAEliminar].precio;
+    } else {
+      carrito.splice(indiceAEliminar, 1);
+    }
+    
     guardarCarrito();
     mostrarCarrito();
+    actualizarContador();
     indiceAEliminar = null;
   }
   document.getElementById("confirmacionModal").style.display = "none";
 }
 
+
 function cancelarEliminacion() {
   indiceAEliminar = null;
   document.getElementById("confirmacionModal").style.display = "none";
+}
+
+function actualizarContador() {
+  const contador = document.getElementById("contadorCarrito");
+  let totalUnidades = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+  contador.textContent = totalUnidades;
 }
 
   </script>
