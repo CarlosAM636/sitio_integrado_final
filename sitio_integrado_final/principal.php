@@ -255,6 +255,16 @@ if (!isset($_SESSION['usuario'])) {
   padding: 10px 10px;
 }
 
+.carrito-item button {
+  background: #f06292;
+  border: none;
+  color: white;
+  font-size: 16px;
+  padding: 4px 8px;
+  border-radius: 5px;
+  margin: 0 2px;
+}
+
     @media (max-width: 600px) {
       nav {
         flex-direction: column;
@@ -407,11 +417,20 @@ if (!isset($_SESSION['usuario'])) {
       carrito.forEach((item, i) => {
         total += item.precioTotal;
         lista.innerHTML += `
-          <div class="carrito-item">
-            <span>${item.nombre} x${item.cantidad}</span>
-            <span>S/ ${item.precioTotal.toFixed(2)}</span>
-            <button onclick="eliminar(${i})">❌</button>
-          </div>
+        <div class="carrito-item">
+          <span>${item.nombre}</span>
+        <div>
+          <button onclick="cambiarCantidad(${i}, -1)">➖</button>
+          <span style="margin: 0 8px;">${item.cantidad}</span>
+          <button onclick="cambiarCantidad(${i}, 1)">➕</button>
+        </div>
+          <span>S/ ${item.precioTotal.toFixed(2)}</span>
+          <button onclick="eliminar(${i})">❌</button>
+        </div>
+`;
+
+`;
+
         `;
       });
 
@@ -445,12 +464,7 @@ function eliminar(indice) {
 
 function confirmarEliminacion() {
   if (indiceAEliminar !== null) {
-    if (carrito[indiceAEliminar].cantidad > 1) {
-      carrito[indiceAEliminar].cantidad -= 1;
-      carrito[indiceAEliminar].precioTotal = carrito[indiceAEliminar].cantidad * carrito[indiceAEliminar].precio;
-    } else {
-      carrito.splice(indiceAEliminar, 1);
-    }
+    carrito.splice(indiceAEliminar, 1);
 
     guardarCarrito();
     mostrarCarrito();
@@ -471,6 +485,23 @@ function actualizarContador() {
   const contador = document.getElementById("contadorCarrito");
   let totalUnidades = carrito.reduce((acc, item) => acc + item.cantidad, 0);
   contador.textContent = totalUnidades;
+}
+
+function cambiarCantidad(indice, cambio) {
+  if (carrito[indice]) {
+    carrito[indice].cantidad += cambio;
+
+    // Si la cantidad es menor que 1, elimínalo
+    if (carrito[indice].cantidad < 1) {
+      carrito.splice(indice, 1);
+    } else {
+      carrito[indice].precioTotal = carrito[indice].cantidad * carrito[indice].precio;
+    }
+
+    guardarCarrito();
+    mostrarCarrito();
+    actualizarContador();
+  }
 }
 
   </script>
